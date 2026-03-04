@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sum of Products of Corresponding Digits</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sum of Products of Corresponding Digits</h1>
+        <input type="number" id="n1" placeholder="Enter first number ">
+        <input type="number" id="n2" placeholder="Enter second number ">
+        <button onclick="calculateSumOfProducts()">Calculate</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function calculateSumOfProducts() {
+            const n1 = document.getElementById('n1').value;
+            const n2 = document.getElementById('n2').value;
+            const maxLength = Math.max(n1.length, n2.length);
+            let sum = 0;
+
+            for (let i = 0; i < maxLength; i++) {
+                const digit1 = parseInt(n1[n1.length - 1 - i]) || 0;
+                const digit2 = parseInt(n2[n2.length - 1 - i]) || 0;
+                sum += digit1 * digit2;
+            }
+
+            document.getElementById('result').innerText = `Result: ${sum}`;
+        }
+    </script>
+</body>
+</html>
