@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Movies</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background: #f7f7f7;
+  }
+  h1 {
+    text-align: center;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .movie {
+    background: white;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    cursor: pointer;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+  }
+  .movie:hover {
+    transform: scale(1.05);
+  }
+  .movie img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+  }
+  .movie h3 {
+    margin: 10px;
+    font-size: 1.1rem;
+  }
+</style>
+</head>
+<body>
+<h1>Movie List</h1>
+<div class="grid" id="movieGrid"></div>
+
+<script>
+const movies = [
+  { name: "Avengers", img: "https://source.unsplash.com/featured/?avengers" },
+  { name: "Batman", img: "https://source.unsplash.com/featured/?batman" },
+  { name: "Spider Man", img: "https://source.unsplash.com/featured/?spiderman" },
+  { name: "Joker", img: "https://source.unsplash.com/featured/?joker" },
+  { name: "Iron Man", img: "https://source.unsplash.com/featured/?ironman" },
+  { name: "Thor", img: "https://source.unsplash.com/featured/?thor" },
+  { name: "Hulk", img: "https://source.unsplash.com/featured/?hulk" },
+  { name: "Captain America", img: "https://source.unsplash.com/featured/?captainamerica" },
+  { name: "Black Panther", img: "https://source.unsplash.com/featured/?blackpanther" },
+  { name: "Doctor Strange", img: "https://source.unsplash.com/featured/?doctorstrange" },
+  { name: "Aquaman", img: "https://source.unsplash.com/featured/?aquaman" },
+  { name: "Flash", img: "https://source.unsplash.com/featured/?flash" },
+  { name: "Wonder Woman", img: "https://source.unsplash.com/featured/?wonderwoman" },
+  { name: "Shazam", img: "https://source.unsplash.com/featured/?shazam" },
+  { name: "Superman", img: "https://source.unsplash.com/featured/?superman" },
+  { name: "Deadpool", img: "https://source.unsplash.com/featured/?deadpool" }
+];
+
+const container = document.getElementById("movieGrid");
+
+movies.forEach(({name, img}) => {
+  const div = document.createElement("div");
+  div.className = "movie";
+  div.innerHTML = `
+    <img src="${img}" alt="${name}" loading="lazy" />
+    <h3>${name}</h3>
+  `;
+  div.onclick = () => {
+    localStorage.setItem("selectedMovie", name);
+    window.location.href = "details.html";
+  };
+  container.appendChild(div);
+});
+</script>
+</body>
+</html>
