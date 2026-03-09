@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Todo List App</title>
+</head>
+<body>
+
+<h2>Todo List</h2>
+
+<input type="text" id="taskInput" placeholder="Enter a task">
+<button id="addBtn">Add</button>
+
+<ul id="todoList">
+
+</ul>
+
+<script>
+
+const taskInput = document.getElementById("taskInput");
+const addBtn = document.getElementById("addBtn");
+const todoList = document.getElementById("todoList");
+
+function addTask() {
+  const task = taskInput.value.trim();
+  if (task === "") {
+    alert("Please enter a task!");
+    return;
+  }
+
+  const li = document.createElement("li");
+  li.textContent = task;
+
+  const delBtn = document.createElement("button");
+  delBtn.textContent = "Delete";
+  delBtn.style.marginLeft = "10px";
+
+  delBtn.onclick = function() {
+    li.remove();
+    sortTasks(); 
+  };
+
+  li.appendChild(delBtn);
+  todoList.appendChild(li);
+
+  taskInput.value = "";
+
+  sortTasks();
+}
+
+function sortTasks() {
+  const tasks = Array.from(todoList.getElementsByTagName("li"));
+  tasks.sort((a,b) => a.firstChild.textContent.localeCompare(b.firstChild.textContent));
+  tasks.forEach(task => todoList.appendChild(task));
+}
+
+addBtn.addEventListener("click", addTask);
+
+taskInput.addEventListener("keypress", function(e){
+  if(e.key === "Enter"){
+    addTask();
+  }
+});
+</script>
+
+</body>
+</html>
