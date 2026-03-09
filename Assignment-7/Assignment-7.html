@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>IPL Season 2022 Points</title>
+  <style>
+    body {
+      font-family: serif;
+      padding: 30px;
+      background: #fff;
+    }
+    h1 {
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    table {
+      border-collapse: collapse;
+      width: 80%;
+      margin: 0 auto;
+      font-family: serif;
+      font-size: 18px;
+    }
+    th, td {
+      padding: 8px 12px;
+      white-space: nowrap;
+    }
+    th {
+      border-bottom: 2px solid black;
+      font-weight: bold;
+      text-align: left;
+    }
+    td.no {
+      width: 30px;
+      text-align: right;
+    }
+    td.team {
+      text-align: left;
+      width: 280px;
+    }
+    td.matches, td.won, td.lost, td.tied, td.nrr, td.points {
+      text-align: right;
+      width: 60px;
+    }
+    tbody tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>IPL Season 2022 Points</h1>
+
+  <table id="pointsTable">
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Team</th>
+        <th>Matches</th>
+        <th>Won</th>
+        <th>Lost</th>
+        <th>Tied</th>
+        <th>NRR</th>
+        <th>Points</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Data rows will be inserted here -->
+    </tbody>
+  </table>
+
+  <script>
+    const apiURL = "https://my-json-server.typicode.com/FreSauce/json-ipl/data";
+
+    fetch(apiURL)
+      .then(response => response.json())
+      .then(data => {
+        // Sort data ascending by NRR
+        data.sort((a, b) => parseFloat(a.NRR) - parseFloat(b.NRR));
+
+        const tbody = document.querySelector("#pointsTable tbody");
+        tbody.innerHTML = "";
+
+        data.forEach(team => {
+          const tied = (team.Tied !== undefined && team.Tied !== null) ? team.Tied : 0;
+
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td class="no">${team.No}</td>
+            <td class="team">${team.Team}</td>
+            <td class="matches">${team.Matches}</td>
+            <td class="won">${team.Won}</td>
+            <td class="lost">${team.Lost}</td>
+            <td class="tied">${tied}</td>
+            <td class="nrr">${team.NRR.toFixed(3)}</td>
+            <td class="points">${team.Points}</td>
+          `;
+          tbody.appendChild(tr);
+        });
+      })
+      .catch(error => {
+        console.error("Error fetching data:", error);
+        document.querySelector("#pointsTable tbody").innerHTML = 
+          "<tr><td colspan='8'>Failed to load data</td></tr>";
+      });
+  </script>
+
+</body>
+</html>
