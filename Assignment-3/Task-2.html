@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Reverse Words</title>
+
+<style>
+
+body{
+font-family: Arial, sans-serif;
+background:#f4f6fb;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+margin:0;
+}
+
+.container{
+background:white;
+padding:30px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+width:400px;
+text-align:center;
+}
+
+h2{
+color:#333;
+}
+
+input{
+width:90%;
+padding:10px;
+margin-top:10px;
+border-radius:5px;
+border:1px solid #ccc;
+font-size:16px;
+}
+
+button{
+margin-top:15px;
+padding:10px 20px;
+background:#0dd353;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+font-size:16px;
+}
+
+button:hover{
+background:#0dd353;
+}
+
+#output{
+margin-top:20px;
+font-size:18px;
+color:#333;
+background:#f1f1f1;
+padding:10px;
+border-radius:5px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Reverse Sentence</h2>
+
+<input type="text" id="textInput" value="I love my India">
+
+<br>
+
+<button onclick="reverseSentence()">Reverse Words</button>
+
+<div id="output"></div>
+
+</div>
+
+<script>
+
+function reverseSentence(){
+
+let str = document.getElementById("textInput").value;
+
+let result = str.split(" ").reverse().join(" ");
+
+document.getElementById("output").innerHTML = result;
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Word Replace Function</title>
+
+<style>
+body{
+font-family: Arial, sans-serif;
+background:#f0f2f5;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+margin:0;
+}
+
+.container{
+background:white;
+padding:30px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+width:420px;
+text-align:center;
+}
+
+input{
+width:90%;
+padding:10px;
+margin:8px 0;
+border-radius:5px;
+border:1px solid #ccc;
+font-size:15px;
+}
+
+button{
+padding:10px 20px;
+background:#007bff;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+margin-top:10px;
+}
+
+button:hover{
+background:#0056b3;
+}
+
+.result{
+margin-top:20px;
+font-size:18px;
+background:#f4f4f4;
+padding:10px;
+border-radius:5px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Replace Wrong Word</h2>
+
+<input type="text" id="sentence" placeholder="Enter a sentence">
+
+<input type="text" id="wrongWord" placeholder="Wrong word">
+
+<input type="text" id="correctWord" placeholder="Correct word">
+
+<br>
+
+<button onclick="runReplace()">Replace Word</button>
+
+<div class="result" id="output"></div>
+
+</div>
+
+<script>
+
+function correctfn(string, wrong, correct){
+return string.replace(wrong, correct);
+}
+
+function runReplace(){
+
+let sentence = document.getElementById("sentence").value;
+let wrong = document.getElementById("wrongWord").value;
+let correct = document.getElementById("correctWord").value;
+
+let result = correctfn(sentence, wrong, correct);
+
+document.getElementById("output").innerHTML = result;
+
+}
+
+</script>
+
+</body>
+</html>

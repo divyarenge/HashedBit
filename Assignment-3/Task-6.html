@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Filter Numbers</title>
+
+<style>
+body{
+font-family:Arial;
+text-align:center;
+background:#f2f2f2;
+padding:40px;
+}
+
+button{
+padding:10px 20px;
+background:#4CAF50;
+color:white;
+border:none;
+cursor:pointer;
+}
+
+.result{
+margin-top:20px;
+font-size:20px;
+color:#333;
+}
+</style>
+
+</head>
+<body>
+
+<h2>Filter Numbers Greater Than 5</h2>
+<p>Array: [1,2,3,9,10,7,5,4,3]</p>
+
+<button onclick="filterNumbers()">Filter</button>
+
+<div class="result" id="result"></div>
+
+<script>
+
+function filterNumbers(){
+
+const arr = [1,2,3,9,10,7,5,4,3];
+
+const filtered = arr.filter(num => num > 5);
+
+document.getElementById("result").innerText = filtered;
+
+}
+
+</script>
+
+</body>
+</html>

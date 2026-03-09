@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Vowel and Consonant Counter</title>
+
+<style>
+body{
+font-family: Arial, sans-serif;
+background:#eef2f7;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+margin:0;
+}
+
+.container{
+background:white;
+padding:30px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+text-align:center;
+width:420px;
+}
+
+h2{
+color:#333;
+}
+
+textarea{
+width:90%;
+height:80px;
+padding:10px;
+margin-top:10px;
+border-radius:5px;
+border:1px solid #ccc;
+font-size:16px;
+}
+
+button{
+margin-top:15px;
+padding:10px 20px;
+background:#d3810e;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+font-size:16px;
+}
+
+button:hover{
+background:#d3810e;
+}
+
+.result{
+margin-top:20px;
+font-size:18px;
+color:#333;
+background:#f4f4f4;
+padding:10px;
+border-radius:5px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Vowel & Consonant Counter</h2>
+
+<textarea id="textInput" placeholder="Enter at least 20 characters"></textarea>
+
+<br>
+
+<button onclick="countLetters()">Count</button>
+
+<div class="result" id="output"></div>
+
+</div>
+
+<script>
+
+function countLetters(){
+
+let str = document.getElementById("textInput").value.toLowerCase();
+
+if(str.length < 20){
+alert("Please enter at least 20 characters");
+return;
+}
+
+let vowels = "aeiou";
+let vowelCount = 0;
+let consonantCount = 0;
+
+for(let i=0;i<str.length;i++){
+
+let char = str[i];
+
+if(vowels.includes(char)){
+vowelCount++;
+}
+else if(char >= 'a' && char <= 'z'){
+consonantCount++;
+}
+
+}
+
+document.getElementById("output").innerHTML =
+"Vowels: " + vowelCount + "<br>Consonants: " + consonantCount;
+
+}
+
+</script>
+
+</body>
+</html>

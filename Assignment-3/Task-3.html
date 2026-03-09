@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Splice Example</title>
+
+<style>
+body{
+font-family: Arial;
+background:#f2f2f2;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+margin:0;
+}
+
+.container{
+background:white;
+padding:30px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+text-align:center;
+width:350px;
+}
+
+button{
+padding:10px 20px;
+background:#007bff;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+margin-top:15px;
+}
+
+button:hover{
+background:#0056b3;
+}
+
+.result{
+margin-top:20px;
+font-size:18px;
+color:#333;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Convert INDIA to INDONESIA</h2>
+
+<button onclick="convert()">Show Result</button>
+
+<div class="result" id="output"></div>
+
+</div>
+
+<script>
+
+function convert(){
+
+let string = "INDIA";
+
+let arr = string.split(""); 
+
+arr.splice(3,0,"O","N","E","S");
+
+let result = arr.join("");
+
+document.getElementById("output").innerHTML = result;
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<style>
+body{
+font-family:Arial;
+text-align:center;
+background:#fff3e0;
+padding:40px;
+}
+
+input{
+padding:10px;
+}
+
+button{
+padding:10px 20px;
+background:#ff5722;
+color:white;
+border:none;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h2>Reverse String</h2>
+
+<input type="text" id="text" placeholder="Enter text">
+
+<button onclick="reverseText()">Reverse</button>
+
+<h3 id="result"></h3>
+
+<script>
+
+function reverseText(){
+
+const text = document.getElementById("text").value;
+
+const reversed = text.split('').reverse().join('');
+
+document.getElementById("result").innerText = reversed;
+
+}
+
+</script>
+
+</body>
+</html>

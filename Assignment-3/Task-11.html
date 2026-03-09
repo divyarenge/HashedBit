@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<style>
+body{
+font-family:Arial;
+text-align:center;
+background:#f3e5f5;
+padding:40px;
+}
+
+button{
+padding:10px 20px;
+background:#9c27b0;
+color:white;
+border:none;
+}
+
+pre{
+background:white;
+padding:20px;
+margin-top:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h2>Student Subject Average</h2>
+
+<button onclick="findAverage()">Find Average</button>
+
+<pre id="result"></pre>
+
+<script>
+
+function findAverage(){
+
+const students = {
+
+student1:{
+subject1:44,
+subject2:56,
+subject3:87,
+subject4:97,
+subject5:37
+},
+
+student2:{
+subject1:44,
+subject2:56,
+subject3:87,
+subject4:97,
+subject5:37
+},
+
+student3:{
+subject1:44,
+subject2:56,
+subject3:87,
+subject4:97,
+subject5:37
+}
+
+};
+
+const result = {};
+
+for(let student in students){
+
+const marks = Object.values(students[student]);
+
+const avg = marks.reduce((a,b)=>a+b)/marks.length;
+
+result[student] = {average: avg};
+
+}
+
+document.getElementById("result").textContent =
+JSON.stringify(result,null,2);
+
+}
+
+</script>
+
+</body>
+</html>
