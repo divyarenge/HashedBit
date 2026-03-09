@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Booking Form</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    max-width: 400px;
+    margin: 30px auto;
+    background: #fefefe;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  h1 {
+    text-align: center;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  input {
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+  }
+  button {
+    background: #6c5ce7;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    cursor: pointer;
+  }
+  button:disabled {
+    background: #aaa;
+    cursor: not-allowed;
+  }
+</style>
+</head>
+<body>
+
+<h1>Enter Your Details</h1>
+
+<form id="bookingForm">
+  <input type="text" id="name" placeholder="Name" required />
+  <input type="email" id="email" placeholder="Email" required />
+  <input type="tel" id="mobile" placeholder="Mobile Number" pattern="[0-9]{10}" required />
+  <button type="submit">Submit Booking</button>
+</form>
+
+<script>
+const form = document.getElementById("bookingForm");
+
+form.addEventListener("submit", e => {
+  e.preventDefault();
+  // Save user data to localStorage
+  localStorage.setItem("name", form.name.value.trim());
+  localStorage.setItem("email", form.email.value.trim());
+  localStorage.setItem("mobile", form.mobile.value.trim());
+  window.location.href = "success.html";
+});
+</script>
+
+</body>
+</html>

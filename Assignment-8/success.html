@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Booking Successful</title>
+</head>
+
+<body>
+
+<h1>Seat Booked Successfully 🎉</h1>
+
+<h2 id="bookingId"></h2>
+
+<p id="name"></p>
+<p id="email"></p>
+<p id="mobile"></p>
+
+<script>
+
+let bookingId="BOOK"+Math.floor(Math.random()*100000)
+
+document.getElementById("bookingId").innerText="Booking ID: "+bookingId
+
+document.getElementById("name").innerText="Name: "+localStorage.getItem("name")
+
+document.getElementById("email").innerText="Email: "+localStorage.getItem("email")
+
+document.getElementById("mobile").innerText="Mobile: "+localStorage.getItem("mobile")
+
+</script>
+
+</body>
+</html>

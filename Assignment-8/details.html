@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Movie Details</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: 20px auto;
+    background: #fefefe;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  h1, h2 {
+    text-align: center;
+  }
+  #seats {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 10px;
+    margin: 20px 0;
+  }
+  .seat {
+    width: 40px;
+    height: 40px;
+    background: #ddd;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  .seat.selected {
+    background: #6c5ce7;
+    color: white;
+  }
+  button {
+    display: block;
+    margin: 0 auto;
+    padding: 12px 24px;
+    font-size: 1rem;
+    border: none;
+    background: #6c5ce7;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  button:disabled {
+    background: #aaa;
+    cursor: not-allowed;
+  }
+  #selectedCount {
+    text-align: center;
+    margin-top: 10px;
+  }
+</style>
+</head>
+<body>
+
+<h1>Movie Details</h1>
+<h2 id="movieName"></h2>
+
+<p>Select your seats:</p>
+<div id="seats"></div>
+<div id="selectedCount">Selected Seats: 0</div>
+<button id="proceedBtn" disabled>Proceed to Booking</button>
+
+<script>
+const movieName = localStorage.getItem("selectedMovie") || "Unknown Movie";
+document.getElementById("movieName").textContent = movieName;
+
+const seatsContainer = document.getElementById("seats");
+const selectedCountEl = document.getElementById("selectedCount");
+const proceedBtn = document.getElementById("proceedBtn");
+
+const totalSeats = 32; // 4 rows × 8 columns
+let selectedSeats = [];
+
+function updateSelectedCount() {
+  selectedCountEl.textContent = `Selected Seats: ${selectedSeats.length}`;
+  proceedBtn.disabled = selectedSeats.length === 0;
+}
+
+function createSeats() {
+  for(let i = 1; i <= totalSeats; i++) {
+    const seat = document.createElement("div");
+    seat.classList.add("seat");
+    seat.textContent = i;
+    seat.onclick = () => {
+      if (seat.classList.contains("selected")) {
+        seat.classList.remove("selected");
+        selectedSeats = selectedSeats.filter(s => s !== i);
+      } else {
+        seat.classList.add("selected");
+        selectedSeats.push(i);
+      }
+      updateSelectedCount();
+    }
+    seatsContainer.appendChild(seat);
+  }
+}
+
+proceedBtn.onclick = () => {
+  if(selectedSeats.length === 0) return;
+  localStorage.setItem("selectedSeats", JSON.stringify(selectedSeats));
+  window.location.href = "form.html";
+}
+
+createSeats();
+updateSelectedCount();
+</script>
+
+</body>
+</html>
