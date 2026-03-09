@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Toggle Paragraph</title>
+
+<style>
+body{
+font-family: Arial;
+text-align:center;
+padding:40px;
+}
+
+button{
+padding:10px 20px;
+background:#333;
+color:white;
+border:none;
+cursor:pointer;
+margin-bottom:20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<button onclick="toggleParagraph()">Show / Hide Paragraph</button>
+
+<p id="useless-paragraph">
+This paragraph is important for some users but useless for others.
+Click the button to hide or show it.
+</p>
+
+<script>
+
+function toggleParagraph(){
+
+const para = document.getElementById("useless-paragraph");
+
+if(para.style.display === "none"){
+para.style.display = "block";
+}else{
+para.style.display = "none";
+}
+
+}
+
+</script>
+
+</body>
+</html>

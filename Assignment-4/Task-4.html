@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Text Style Controller</title>
+
+<style>
+
+body{
+font-family: Arial;
+text-align:center;
+padding:30px;
+background:#f4f4f4;
+}
+
+#text-container{
+margin:30px auto;
+font-size:55px;
+width:80%;
+}
+
+input,select,button{
+margin:5px;
+padding:8px 12px;
+}
+
+.stylebt{
+background:#444;
+color:white;
+border:none;
+cursor:pointer;
+}
+
+#getstyle{
+background:#0077cc;
+color:white;
+border:none;
+cursor:pointer;
+}
+
+#css-props{
+margin-top:20px;
+background:#fff;
+padding:10px;
+border:1px solid #ccc;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="text-here" id="text-container">
+This is some example text
+</div>
+
+<!-- Color changer -->
+<input type="text" id="colorbox" placeholder="Enter color name">
+<button id="colorchange">Change Color</button>
+
+<br><br>
+
+<!-- Font size slider -->
+<label>Font Size:</label>
+<input type="range" id="fontsize" min="10" max="100" value="55">
+
+<br><br>
+
+<!-- Style buttons -->
+<button id="underline" class="stylebt">Underline</button>
+<button id="italic" class="stylebt">Italic</button>
+<button id="bold" class="stylebt">Bold</button>
+
+<br><br>
+
+<!-- Font family dropdown -->
+<select id="list">
+<option value="serif">Serif</option>
+<option value="sans-serif">Sans-Serif</option>
+<option value="monospace">Monospace</option>
+<option value="cursive">Cursive</option>
+<option value="fantasy">Fantasy</option>
+</select>
+
+<br><br>
+
+<button id="getstyle">Get CSS</button>
+
+<p id="css-props"></p>
+
+<script>
+
+const text = document.getElementById("text-container");
+
+// COLOR CHANGE
+document.getElementById("colorchange").onclick = function(){
+const color = document.getElementById("colorbox").value;
+text.style.color = color;
+};
+
+// FONT SIZE CHANGE
+document.getElementById("fontsize").oninput = function(){
+text.style.fontSize = this.value + "px";
+};
+
+// UNDERLINE TOGGLE
+document.getElementById("underline").onclick = function(){
+
+if(text.style.textDecoration === "underline"){
+text.style.textDecoration = "none";
+}else{
+text.style.textDecoration = "underline";
+}
+
+};
+
+// ITALIC TOGGLE
+document.getElementById("italic").onclick = function(){
+
+if(text.style.fontStyle === "italic"){
+text.style.fontStyle = "normal";
+}else{
+text.style.fontStyle = "italic";
+}
+
+};
+
+// BOLD TOGGLE
+document.getElementById("bold").onclick = function(){
+
+if(text.style.fontWeight === "bold"){
+text.style.fontWeight = "normal";
+}else{
+text.style.fontWeight = "bold";
+}
+
+};
+
+// FONT FAMILY CHANGE
+document.getElementById("list").onchange = function(){
+text.style.fontFamily = this.value;
+};
+
+// GET CSS PROPERTIES
+document.getElementById("getstyle").onclick = function(){
+
+const color = text.style.color || "black";
+const size = text.style.fontSize || "55px";
+const family = text.style.fontFamily || "serif";
+const underline = text.style.textDecoration === "underline" ? "underline" : "none";
+const italic = text.style.fontStyle === "italic" ? "italic" : "normal";
+const bold = text.style.fontWeight === "bold" ? "bold" : "normal";
+
+const css = 
+`color: ${color}; 
+font-size: ${size}; 
+font-family: ${family}; 
+text-decoration: ${underline}; 
+font-style: ${italic}; 
+font-weight: ${bold};`;
+
+document.getElementById("css-props").innerText = css;
+
+};
+
+</script>
+
+</body>
+</html>
