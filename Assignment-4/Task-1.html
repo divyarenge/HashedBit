@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Theme Toggle</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+}
+
+/* DAY THEME */
+.day{
+background-color:#ffffff;
+color:#222;
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+}
+
+/* NIGHT THEME */
+.night{
+background-color:#222;
+color:#ffffff;
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+}
+
+/* DAY BUTTON */
+.button_day{
+background:#222;
+color:#fff;
+padding:10px 20px;
+border:none;
+cursor:pointer;
+margin-top:20px;
+}
+
+/* NIGHT BUTTON */
+.button_night{
+background:#fff;
+color:#222;
+padding:10px 20px;
+border:none;
+cursor:pointer;
+margin-top:20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="app" class="day">
+
+<p>I am a HashedBit student, ready to become an awesome full stack developer</p>
+
+<button id="swap" class="button_day" onclick="swapTheme()">
+Toggle Theme
+</button>
+
+</div>
+
+<script>
+
+function swapTheme(){
+
+const app = document.getElementById("app");
+const button = document.getElementById("swap");
+
+if(app.className === "day"){
+
+app.className = "night";
+button.className = "button_night";
+
+}else{
+
+app.className = "day";
+button.className = "button_day";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
