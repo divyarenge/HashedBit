@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Filter States</title>
+
+<style>
+body{
+  font-family: Arial;
+  text-align:center;
+  background:#f5f5f5;
+}
+
+.container{
+  background:white;
+  width:500px;
+  margin:50px auto;
+  padding:20px;
+  border-radius:10px;
+  box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+button{
+  padding:10px 15px;
+  border:none;
+  background:#007bff;
+  color:white;
+  border-radius:5px;
+  cursor:pointer;
+}
+
+button:hover{
+  background:#0056b3;
+}
+
+/* Horizontal list */
+ul{
+  list-style:none;
+  padding:0;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:10px;
+}
+
+li{
+  background:#e9ecef;
+  padding:8px 12px;
+  border-radius:5px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Indian States Filter</h2>
+
+<h3>Original States</h3>
+<ul id="original"></ul>
+
+<button onclick="filterStates()">Remove States Starting With Vowels</button>
+
+<h3>Filtered States</h3>
+<ul id="filtered"></ul>
+
+</div>
+
+<script>
+
+// Array of Indian states
+let states = [
+"Andhra Pradesh","Arunachal Pradesh","Assam","Bihar",
+"Chhattisgarh","Goa","Gujarat","Haryana","Himachal Pradesh",
+"Jharkhand","Karnataka","Kerala","Madhya Pradesh",
+"Maharashtra","Manipur","Meghalaya","Mizoram",
+"Nagaland","Odisha","Punjab","Rajasthan",
+"Sikkim","Tamil Nadu","Telangana","Tripura",
+"Uttar Pradesh","Uttarakhand","West Bengal"
+];
+
+// display original states
+let originalList = document.getElementById("original");
+
+states.forEach(state=>{
+let li=document.createElement("li");
+li.textContent=state;
+originalList.appendChild(li);
+});
+
+function filterStates(){
+
+let filtered = states.filter(state => {
+return !/^[AEIOU]/i.test(state);
+});
+
+let filteredList = document.getElementById("filtered");
+filteredList.innerHTML="";
+
+filtered.forEach(state=>{
+let li=document.createElement("li");
+li.textContent=state;
+filteredList.appendChild(li);
+});
+
+}
+
+</script>
+
+</body>
+</html>
